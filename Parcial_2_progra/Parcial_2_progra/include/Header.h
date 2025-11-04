@@ -1,6 +1,12 @@
 #pragma once
-#include<vector>
-#include<string>
-#include<ctime>
-#include<iostream>
-#include<unordered_map>
+
+/**
+ * @file
+ * @brief Inclusión de bibliotecas estándar necesarias para la gestión de productos y operaciones relacionadas.
+ */
+
+#include <vector>        ///< Para manejar listas dinámicas de elementos, como colecciones de productos.
+#include <string>        ///< Para manipulación de cadenas de texto.
+#include <ctime>         ///< Para trabajar con fechas y tiempos, útil en registros o caducidades.
+#include <iostream>      ///< Para entrada/salida estándar, como mostrar información en consola.
+#include <unordered_map> ///< Para estructuras de mapeo rápido, como asociar códigos de productos con sus datos.
