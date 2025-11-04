@@ -145,7 +145,11 @@
     <ClCompile Include="source\Parcial_2.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\AlertaStockDown.h" />
+    <ClInclude Include="include\FactoryProducto.h" />
     <ClInclude Include="include\Header.h" />
+    <ClInclude Include="include\Historial.h" />
+    <ClInclude Include="include\Inventario.h" />
     <ClInclude Include="include\nlohmann\adl_serializer.hpp" />
     <ClInclude Include="include\nlohmann\byte_container_with_subtype.hpp" />
     <ClInclude Include="include\nlohmann\detail\abi_macros.hpp" />
@@ -192,6 +196,8 @@
     <ClInclude Include="include\nlohmann\ordered_map.hpp" />
     <ClInclude Include="include\nlohmann\thirdparty\hedley\hedley.hpp" />
     <ClInclude Include="include\nlohmann\thirdparty\hedley\hedley_undef.hpp" />
+    <ClInclude Include="include\Observator.h" />
+    <ClInclude Include="include\producto.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
