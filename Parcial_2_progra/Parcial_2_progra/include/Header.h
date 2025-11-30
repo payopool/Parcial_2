@@ -10,3 +10,5 @@
 #include <ctime>         ///< Para trabajar con fechas y tiempos, útil en registros o caducidades.
 #include <iostream>      ///< Para entrada/salida estándar, como mostrar información en consola.
 #include <unordered_map> ///< Para estructuras de mapeo rápido, como asociar códigos de productos con sus datos.
+#include<fstream>       ///< Para operaciones de lectura y escritura en archivos, como guardar o cargar datos de productos.
+#include <stdexcept>

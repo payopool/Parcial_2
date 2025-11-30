@@ -23,9 +23,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\Header.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
     <ClInclude Include="include\nlohmann\adl_serializer.hpp">
       <Filter>Archivos de encabezado\nlohmann</Filter>
     </ClInclude>
@@ -164,22 +161,40 @@
     <ClInclude Include="include\nlohmann\thirdparty\hedley\hedley_undef.hpp">
       <Filter>Archivos de encabezado\nlohmann</Filter>
     </ClInclude>
-    <ClInclude Include="include\producto.h">
+    <ClInclude Include="include\Header.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="include\FactoryProducto.h">
+    <ClInclude Include="include\warning.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="include\Observator.h">
+    <ClInclude Include="include\factoryProdu.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="include\AlertaStockDown.h">
+    <ClInclude Include="include\produ.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="include\Historial.h">
+    <ClInclude Include="include\ObserverUwU.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="include\Inventario.h">
+    <ClInclude Include="include\Histo.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="include\inventory.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="include\pagoStrategia}.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ServicioTicket.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GasXD.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="include\FecadeSystem.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="include\JASON13.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>

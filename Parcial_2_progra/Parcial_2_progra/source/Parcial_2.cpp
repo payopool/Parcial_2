@@ -1,70 +1,136 @@
 #include "Header.h"
-#include "Inventario.h"
-#include "AlertaStockDown.h"
-#include "Historial.h"
-#include <nlohmann/json.hpp>
+#include "inventory.h"
+#include "warning.h"
+#include "Histo.h"
+#include "pagoStrategia}.h" // Nombre corregido
+#include "ServicioTicket.h"
+#include "GasXD.h"
+#include "FecadeSystem.h"
+#include "JASON13.h"
 
-/**
- * @brief Función principal del programa.
- *
- * Crea un inventario de productos, registra un observador de alerta por bajo stock,
- * realiza operaciones como agregar, vender, actualizar y eliminar productos, y registra
- * dichas acciones en un historial de transacciones.
- *
- * @return int Código de salida del programa (0 si finaliza correctamente).
- */
 int main() {
-  Inventario inventario;
-  historial historialTransacciones;
-  AlertaSatockDown alertaBaja(5);
-  inventario.registrarObservador(&alertaBaja);
+  Inventa inventario;
+  Warning alerta(5);
+  Histo historial;
 
-  nlohmann::json producto1 = {
-      {"nombre", "Gansito"},
-      {"precio", 12.5},
-      {"cantidad", 20},
-      {"codigo", "A001"}
-  };
+  inventario.registrarObservador(&alerta);
+  inventario.registrarObservador(&historial);
 
-  nlohmann::json producto2 = {
-      {"nombre", "Mantecadas"},
-      {"precio", 28},
-      {"cantidad", 3},
-      {"codigo", "B002"}
-  };
+  FecadeSystem sistema;
 
-  nlohmann::json producto3 = {
-      {"nombre", "Fanta 3L"},
-      {"precio", 32},
-      {"cantidad", 5},
-      {"codigo", "C003"}
-  };
+  // Ejemplo inicial (Opcional, si quieres iniciar con un producto default)
+  // inventario.agregarProducto(JASON13::guardarProducto(Produ("Gasolina Magna", 22.5, "MAG01", 100)));
 
-  // Agrega productos al inventario
-  inventario.agregarProducto(producto1);
-  inventario.agregarProducto(producto2);
-  inventario.agregarProducto(producto3);
+  int ele;
+  do {
+    std::cout << "\n--- Bienabenido a GasolineriaXD ---\n";
+    std::cout << " 1. Agregar producto\n";
+    std::cout << " 2. Comprar producto\n";
+    std::cout << " 3. Cargar gasolina\n";
+    std::cout << " 4. Mostrar historial\n";
+    std::cout << " 5. Eliminar producto\n";
+    std::cout << " 6. Actualizar cantidad producto\n";
+    std::cout << " 7. Salir\n";
+    std::cout << "Opcion: ";
+    std::cin >> ele;
 
-  // Realiza una venta y registra la transacción
-  inventario.venderProducto("A001", 5);
-  historialTransacciones.agreeRegistro("Venta", 5, Producto("Gansito", 12.5, 15, "A001"));
+    switch (ele) {
+    case 1: {
+      std::string nombre, code;
+      double prec;
+      int cantida;
+      std::cout << "Ingrese el nombre del producto: ";
+      std::cin >> nombre;
+      std::cout << "Ingrese el precio del producto: ";
+      std::cin >> prec;
+      std::cout << "Ingrese el codigo del producto: ";
+      std::cin >> code;
+      std::cout << "Ingrese la cantidad del producto: ";
+      std::cin >> cantida;
 
-  // Actualiza la cantidad de un producto y registra la acción
-  inventario.actualizarCantidad("B002", 2);
-  historialTransacciones.agreeRegistro("Actualizacion", 1, Producto("Mantecadas", 28, 3, "B002"));
+      JASON13 dato;
+      dato.set("nombre", nombre);
+      dato.set("precio", prec);
+      dato.set("codigo", code);
+      dato.set("cantidad", cantida);
 
-  // Otra venta
-  inventario.venderProducto("A001", 1);
+      // Solo una llamada es necesaria
+      inventario.agregarProducto(dato);
+      std::cout << "Producto agregado con exito.\n";
+      break;
+    }
+    case 2: {
+      std::string code;
+      int cantidad, metodo;
+      std::cout << "Ingrese el codigo del producto a comprar: ";
+      std::cin >> code;
+      std::cout << "Ingrese la cantidad a comprar: ";
+      std::cin >> cantidad;
+      std::cout << "Seleccione el metodo de pago (1. Efectivo, 2. Credito): ";
+      std::cin >> metodo;
 
-  // Elimina un producto y registra la eliminación
-  inventario.eliminarProducto("C003");
-  historialTransacciones.agreeRegistro("Eliminacion", 0, Producto("Fanta 3L", 32, 0, "C003"));
+      efectivo pagoEfectivo;
+      digital pagoDigital;
 
-  // Notifica a los observadores sobre un cambio manual
-  inventario.notificarCambios("C003");
+      if (metodo == 1) {
+        sistema.comprarpro(inventario, code, cantidad, pagoEfectivo);
+      }
+      else {
+        sistema.comprarpro(inventario, code, cantidad, pagoDigital);
+      }
+      break;
+    }
+    case 3: {
+      double litros, preciolitros;
+      int metodo, pagaAfterInt;
+      bool pagaAfter;
+      std::cout << "Ingrese la cantidad de litros a cargar: ";
+      std::cin >> litros;
+      std::cout << "Ingrese el precio por litro: ";
+      std::cin >> preciolitros;
+      std::cout << "Seleccione el metodo de pago (1. Efectivo, 2. Credito): ";
+      std::cin >> metodo;
+      std::cout << "Pagar despues de cargar? (1. Si, 0. No): ";
+      std::cin >> pagaAfterInt;
 
-  // Muestra el historial de transacciones
-  historialTransacciones.mostrar();
+      pagaAfter = (pagaAfterInt == 1);
+      efectivo pagoEfectivo;
+      digital pagoDigital;
+      GasXD gasolinera;
 
+      if (metodo == 1) {
+        gasolinera.cargarGas(litros, preciolitros, pagoEfectivo, pagaAfter);
+      }
+      else {
+        gasolinera.cargarGas(litros, preciolitros, pagoDigital, pagaAfter);
+      }
+      break;
+    }
+    case 4: {
+      historial.Mostrar();
+      break;
+    }
+    case 5: {
+      std::string code;
+      std::cout << "codigo a eliminar: ";
+      std::cin >> code;
+      inventario.eliminarProducto(code);
+      std::cout << "Producto eliminado.\n";
+      break;
+    }
+    case 6: {
+      std::string code;
+      int cantidad;
+      std::cout << "codigo: ";
+      std::cin >> code;
+      std::cout << "Nueva cantidad: ";
+      std::cin >> cantidad;
+      inventario.actualizarCan(code, cantidad);
+      break;
+    }
+    }
+
+  } while (ele != 7);
   return 0;
-}
+};
+
