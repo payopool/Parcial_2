@@ -48,7 +48,7 @@ int main() {
   int ele;
   do {
     system("cls");
-    std::cout << "\n--- Bienabenido a GasolineriaXD ---\n";
+    std::cout << "\n--- Bienvenido a GasolineriaXD ---\n";
     std::cout << " 1. Agregar producto\n";
     std::cout << " 2. Comprar producto\n";
     std::cout << " 3. Cargar gasolina\n";

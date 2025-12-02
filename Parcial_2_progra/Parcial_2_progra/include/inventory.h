@@ -43,7 +43,7 @@ public:
    */
   void eliminarProducto(const std::string& code) {
     productos.erase(code);
-    // Nota: Una notificación de eliminación podría ser útil aquí.
+    
   }
 
   /**
